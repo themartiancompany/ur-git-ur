@@ -1,5 +1,24 @@
 # SPDX-License-Identifier: AGPL-3.0
+
+#    ----------------------------------------------------------------------
+#    Copyright © 2023, 2024, 2025  Pellegrino Prevete
 #
+#    All rights reserved
+#    ----------------------------------------------------------------------
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
 # Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
@@ -10,9 +29,10 @@ _os="$( \
 _git='true'
 _offline='false'
 _solc="true"
-_hardhat="true"
+_hardhat="false"
 _proj="hip"
 _Proj="humaninstrumentalityproject"
+_py="python"
 _pkg=ur
 _pkgbase="${_pkg}"
 _pkgname="${_pkg}"
@@ -48,16 +68,14 @@ _local="file://${HOME}/${_pkg}"
 _http="https://${_host}/${_ns}/${_pkg}"
 _url="${_http}"
 depends=(
-  # "aspe"
+  "fur"
   "libcrash-bash"
   "lur"
-  "pub"
-  # "reallymakepkg"
-  # "sus"
 )
 makedepends=(
   'evm-make'
   'make'
+  "${_py}-docutils"
 )
 if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
@@ -70,8 +88,10 @@ if [[ "${_hardhat}" == "true" ]]; then
   )
 fi
 provides=(
+  "${pkgbase}=${pkgver}"
 )
 conflicts=(
+  "${pkgbase}"
 )
 group=(
   "${_proj}-git"
