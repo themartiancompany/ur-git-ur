@@ -21,15 +21,18 @@
 
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
 # Maintainer: Truocolo <truocolo@aol.com>
-# Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 _os="$( \
   uname \
     -o)"
 _git='true'
 _offline='false'
-_solc="true"
-_hardhat="false"
+if [[ ! -v "_solc" ]]; then
+  _solc="true"
+fi
+if [[ ! -v "_hardhat" ]]; then
+  _hardhat="true"
+fi
 _proj="hip"
 _Proj="humaninstrumentalityproject"
 _py="python"
