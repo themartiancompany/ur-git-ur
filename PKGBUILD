@@ -68,9 +68,6 @@ _local="file://${HOME}/${_pkg}"
 _http="https://${_host}/${_ns}/${_pkg}"
 _url="${_http}"
 depends=(
-  "fur"
-  "libcrash-bash"
-  "lur"
 )
 makedepends=(
   'evm-make'
@@ -88,10 +85,8 @@ if [[ "${_hardhat}" == "true" ]]; then
   )
 fi
 provides=(
-  "${pkgbase}=${pkgver}"
 )
 conflicts=(
-  "${pkgbase}"
 )
 group=(
   "${_proj}-git"
@@ -290,6 +285,9 @@ package_ur-git() {
   local \
     _make_opts=()
   depends+=(
+    "fur"
+    "libcrash-bash"
+    "lur"
     "${_pkg}-contracts=${pkgver}"
   )
   provides+=(
